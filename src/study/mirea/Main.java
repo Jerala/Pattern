@@ -19,11 +19,7 @@ public class Main {
             try {
                 System.out.println("Enter a number: ");
                 number = Integer.parseInt(sc.nextLine());
-                if (number % 2 == 0) {
-                    stringSorter = getSorter1();
-                } else {
-                    stringSorter = getSorter2();
-                }
+                stringSorter = getSorter(number);
                 isCorrectNumberEntered = true;
             } catch (Exception e) {
                 System.out.println("Exception: " + e.getLocalizedMessage());
@@ -33,10 +29,11 @@ public class Main {
         System.out.println(result.toString());
     }
 
-    private static StringSorter getSorter1() {
-        return new StringByASCIISorter();
-    }
-    private static StringSorter getSorter2() {
+    private static StringSorter getSorter(int number) {
+        if (number % 2 == 0) {
+            return new StringByASCIISorter();
+        }
         return new StringByLengthSorter();
     }
+
 }
